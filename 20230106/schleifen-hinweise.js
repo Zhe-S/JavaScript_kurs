@@ -22,6 +22,7 @@ for (let i = 0; i < items.length; i++) {
 }
 
 // Variablen!
+console.log("-".repeat(20)+ "Variablen!" + "-".repeat(20))
 let sum = 0
 const shoppingList = [123, 43, 50]
 
