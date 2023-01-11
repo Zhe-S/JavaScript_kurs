@@ -1,9 +1,5 @@
 "use strict"
 
-const courses = [
-  ["Christian", "Annika"], // Kurs 1 mit 2 Teilnehmern
-  ["Julian", "Lisa", "Tobias"] // Kurs 2 mit 3 Teilnehmern
-]
 
 // Aufgabe 1
 //
@@ -26,23 +22,46 @@ const courses = [
 //      >> console.log(getSmallestCourse()) 
 //      >> Rückgabewert: 0, weil der 1. Kurs (Kurs mit Index 0) am 
 //                       wenigsten Teilnehmer hat
-
+console.log("- ".repeat(15)+ "AUFGABE 1a" + "- ".repeat(15))
+const courses = [
+  ["Christian", "Annika"], // Kurs 1 mit 2 Teilnehmern
+  ["Julian", "Lisa", "Tobias"] // Kurs 2 mit 3 Teilnehmern
+]
 function getSmallestCourse() {
   // Ergänze den Code hier! Du darfst die Variable "courses"
   // von außerhalt hier drinnen weiterverwenden!
-}
 
+  let indexLeastStudents = -1;  // beides kurs ist gleich Zahl
+  let smallestCourse = -1
+  for (let i in courses) {
+    let course = courses[i]   // ["Christian", "Annika"]  i = 0 oder i = 1 
+    console.log("course", course)
+
+    if(indexLeastStudents === -1  || course.length < smallestCourse) {  
+      indexLeastStudents = i 
+      smallestCourse = course.length
+    }
+  }
+  return smallestCourse
+}
+console.log(getSmallestCourse())
 // 1b) Ergänze die Funktion, die einen Teilnehmer in den Kurs
 //     einfügt, der bisher am wenigsten Teilnehmer hat!
 //     Wir nutzen hier das Ergebnis aus Teilaufgabe 1a weiter!
 
-function addStudent(name) {
-  // Hier ermitteln wir, welcher Kurs bisher am wenigsten
-  // Teilnehmer hat!
-  const smallestCourse = getSmallestCourse()
 
-  // Ergänze den Code hier!
+console.log("- ".repeat(15)+ "AUFGABE 1b" + "- ".repeat(15)) 
+
+function addStudent(name) {
+  
+  const smallestCourse = getSmallestCourse()  
+
+  courses[smallestCourse].push(name)
 }
+
+addStudent("sunzhe")
+console.log("was ist aktuelle student: ", courses)
+
 
 
 // Aufgabe 2
@@ -56,23 +75,6 @@ function addStudent(name) {
 // für andere Programmierer nochmal zusätzlich an, dass diese Variablen
 // nie abgeändert werden sollen.
 
-const LANGUAGE_DE = [
-  "hallo",
-  "heute",
-  "sprachkurs",
-  "willkommen",
-  "mikrofon",
-  "und"
-]
-
-const LANGUAGE_EN = [
-  "hello",
-  "today",
-  "language course",
-  "welcome",
-  "microphone",
-  "and"
-]
 
 // Die Indexe stimmen jeweils überein, also LANGUAGE_DE[0] 
 // enthält das gleiche Wort in Deutsch, wie LANGUAGE_EN[0]
@@ -98,10 +100,22 @@ const LANGUAGE_EN = [
 //     
 //     >> translateWord("Sprachkurs")
 //     >> // Rückgabewert: "language course"
+
+console.log("- ".repeat(15)+ "AUFGABE 2" + "- ".repeat(15)) 
+const LANGUAGE_DE = ["hallo","heute","sprachkurs","willkommen","mikrofon","und"]
+
+const LANGUAGE_EN = ["hello","today","language course","welcome","microphone","and"]
+
 function translateWord(word) {
-
+  for (const i in LANGUAGE_DE){
+    const wortDe = LANGUAGE_DE[i]
+    const wortEn = LANGUAGE_EN[i]
+    if(wortDe === word){
+      console.log(wortEn)
+    }
+  }
 }
-
+translateWord("sprachkurs")
 // 2b) Schreibe eine Funktion, die den ersten Buchstaben eines
 //     Wortes in Großbuchstaben umwandeln kann.
 // 
@@ -119,10 +133,17 @@ function translateWord(word) {
 //      >> // Rückgabewert: "Sprachschule"
 //     
 //     Das Ergebnis soll per "return" zurückgegeben werden
-
+console.log("- ".repeat(15)+ "AUFGABE 2b" + "- ".repeat(15)) 
 function ucFirst(word) {
-
-}
+  let wordToArray = word.toLowerCase().split(" ");  //将字符串分解为数组并将其小写化 
+  // console.log(wordToArray)
+  for(let i = 0; i<wordToArray.length; i++){
+    //console.log(wordToArray[i])
+    wordToArray[i] = wordToArray[i].slice(0,1).toUpperCase() + wordToArray[i].slice(1)
+  }
+  console.log(wordToArray.join(" "))
+}  
+ucFirst("sprachschule") 
 
 // 2c) Aufbauend den Funktionen aus 2a und 2b, entwickle eine weitere
 //     Funktion, die einen ganzen Satz übersetzen kann!
@@ -145,7 +166,23 @@ function ucFirst(word) {
 //      inzwischen so komplex, dass i.d.R. selbstlernende Programme wie z.B.
 //      Neuronale Netze verwendet werden. Die würde man dann aber eher in 
 //      C++ oder Python entwickeln als in JavaScript.
-
+console.log("- ".repeat(20) + " AUFGABE 2c"+"- ".repeat(20))
 function translateSentence(sentence) {
+  let result = []
+  let sentenceToArray = sentence.toLowerCase().split(" ");
+  console.log(sentenceToArray);
 
+  for(const w in sentenceToArray){
+    console.log(sentenceToArray[w])
+    if(sentenceToArray[w] === LANGUAGE_DE[w]){
+      result.push(LANGUAGE_EN[w])
+    }
+  }
+  console.log(result)
+
+  for (const i in LANGUAGE_DE){
+    const wortDe = LANGUAGE_DE[i]
+    const wortEn = LANGUAGE_EN[i]
+  }
 }
+translateSentence("Hallo und willkommen beim Sprachkurs")
