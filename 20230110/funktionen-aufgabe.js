@@ -44,7 +44,7 @@ function getSmallestCourse() {
   }
   return smallestCourse
 }
-console.log(getSmallestCourse())
+getSmallestCourse()
 // 1b) Ergänze die Funktion, die einen Teilnehmer in den Kurs
 //     einfügt, der bisher am wenigsten Teilnehmer hat!
 //     Wir nutzen hier das Ergebnis aus Teilaufgabe 1a weiter!
