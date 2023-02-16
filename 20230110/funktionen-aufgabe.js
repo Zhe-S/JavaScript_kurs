@@ -44,7 +44,11 @@ function getSmallestCourse() {
   }
   return indexLeastStudents    // Index von Kurs
 }
+<<<<<<< HEAD
 console.log("getSmallestCourse", getSmallestCourse())
+=======
+getSmallestCourse()
+>>>>>>> 9563356764f87eed24d28a9848f193aab1b1b77e
 // 1b) Ergänze die Funktion, die einen Teilnehmer in den Kurs
 //     einfügt, der bisher am wenigsten Teilnehmer hat!
 //     Wir nutzen hier das Ergebnis aus Teilaufgabe 1a weiter!
