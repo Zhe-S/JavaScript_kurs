@@ -29,10 +29,10 @@ const courses = [
 
 /**
  * Gibt den Index des Kurses zurück mit den wenigsten Teilnehmern
- * 
+ * @param {string} name 
  * @returns {number}
  */
-function getSmallestCourse() {
+function getSmallestCourse(name ) {
   // Ergänze den Code hier! Du darfst die Variable "courses"
   // von außerhalt hier drinnen weiterverwenden!
 
@@ -134,18 +134,23 @@ const LANGUAGE_EN = [
 //     
 //     >> translateWord("Sprachkurs")
 //     >> // Rückgabewert: "language course"
-
-
+/**
+ * 
+ * 
+ * 
+ * 
+ * 标记属性 
+ */
 /**
  * Übersetzt ein Wort auf Basis der Variablen LANGUAGE_DE und
  * LANGUAGE_EN
  * 
- * @param {string} word Das word, welches übersetzt werden soll
+ * @param {*} word Das word, welches übersetzt werden soll
  * 
  * @returns {string} Das übersetzte Wort
  */
 function translateWord(word) {
-  word = word.toLowerCase()
+  word = word.
 
   for (const i in LANGUAGE_DE) {
     const currentWord = LANGUAGE_DE[i]

@@ -31,20 +31,24 @@ function getSmallestCourse() {
   // Ergänze den Code hier! Du darfst die Variable "courses"
   // von außerhalt hier drinnen weiterverwenden!
 
-  let indexLeastStudents = -1;  // beides kurs ist gleich Zahl
-  let smallestCourse = -1
+  let indexLeastStudents = -1;  // Index von Kurse (Welchen platz er im Kurs Array hat) 哪一个位置
+  let smallestCourse = -1       // Anzahl der leute im Kurs  有几个人
   for (let i in courses) {
     let course = courses[i]   // ["Christian", "Annika"]  i = 0 oder i = 1 
     console.log("course", course)
 
     if(indexLeastStudents === -1  || course.length < smallestCourse) {  
-      indexLeastStudents = i 
-      smallestCourse = course.length
+      indexLeastStudents = i          // 1        2  <   3
+      smallestCourse = course.length // 3 
     }
   }
-  return smallestCourse
+  return indexLeastStudents    // Index von Kurs
 }
+<<<<<<< HEAD
+console.log("getSmallestCourse", getSmallestCourse())
+=======
 getSmallestCourse()
+>>>>>>> 9563356764f87eed24d28a9848f193aab1b1b77e
 // 1b) Ergänze die Funktion, die einen Teilnehmer in den Kurs
 //     einfügt, der bisher am wenigsten Teilnehmer hat!
 //     Wir nutzen hier das Ergebnis aus Teilaufgabe 1a weiter!
@@ -59,7 +63,10 @@ function addStudent(name) {
   courses[smallestCourse].push(name)
 }
 
-addStudent("sunzhe")
+addStudent("sunzhe1","sunzhe2","sunzhe3")
+addStudent("sunzhe2","sunzhe2","sunzhe3")
+addStudent("sunzhe3","sunzhe2","sunzhe3")
+addStudent("sunzhe4","sunzhe2","sunzhe3")
 console.log("was ist aktuelle student: ", courses)
 
 
@@ -107,15 +114,19 @@ const LANGUAGE_DE = ["hallo","heute","sprachkurs","willkommen","mikrofon","und"]
 const LANGUAGE_EN = ["hello","today","language course","welcome","microphone","and"]
 
 function translateWord(word) {
+   word = word.toLowerCase();
+
   for (const i in LANGUAGE_DE){
     const wortDe = LANGUAGE_DE[i]
     const wortEn = LANGUAGE_EN[i]
     if(wortDe === word){
-      console.log(wortEn)
+      return wortEn
     }
   }
+  return word        // daußen von forloop  
 }
-translateWord("sprachkurs")
+console.log(translateWord("und"))
+
 // 2b) Schreibe eine Funktion, die den ersten Buchstaben eines
 //     Wortes in Großbuchstaben umwandeln kann.
 // 
@@ -133,8 +144,8 @@ translateWord("sprachkurs")
 //      >> // Rückgabewert: "Sprachschule"
 //     
 //     Das Ergebnis soll per "return" zurückgegeben werden
-console.log("- ".repeat(15)+ "AUFGABE 2b" + "- ".repeat(15)) 
-function ucFirst(word) {
+console.log("- ".repeat(15)+ "AUFGABE 2b-1" + "- ".repeat(15)) 
+/* function ucFirst(word) {
   let wordToArray = word.toLowerCase().split(" ");  //将字符串分解为数组并将其小写化 
   // console.log(wordToArray)
   for(let i = 0; i<wordToArray.length; i++){
@@ -143,7 +154,17 @@ function ucFirst(word) {
   }
   console.log(wordToArray.join(" "))
 }  
-ucFirst("sprachschule") 
+ucFirst("sprachschule")  */
+
+
+console.log("- ".repeat(15)+ "AUFGABE 2b-2" + "- ".repeat(15)) 
+function ucFirst(word) {
+  const firstWord = word[0]
+  const rest = word.slice(1)
+
+  return firstWord.toUpperCase() + rest
+}  
+console.log(ucFirst("sprachschule") )
 
 // 2c) Aufbauend den Funktionen aus 2a und 2b, entwickle eine weitere
 //     Funktion, die einen ganzen Satz übersetzen kann!
@@ -168,21 +189,14 @@ ucFirst("sprachschule")
 //      C++ oder Python entwickeln als in JavaScript.
 console.log("- ".repeat(20) + " AUFGABE 2c"+"- ".repeat(20))
 function translateSentence(sentence) {
-  let result = []
-  let sentenceToArray = sentence.toLowerCase().split(" ");
-  console.log(sentenceToArray);
+ const words = sentence.split(" ")
+ const translatedWords = [];
+ for(const word of words){
+  const translatedWord = translateWord(word)
+  translatedWords.push(translatedWord)
 
-  for(const w in sentenceToArray){
-    console.log(sentenceToArray[w])
-    if(sentenceToArray[w] === LANGUAGE_DE[w]){
-      result.push(LANGUAGE_EN[w])
-    }
   }
-  console.log(result)
-
-  for (const i in LANGUAGE_DE){
-    const wortDe = LANGUAGE_DE[i]
-    const wortEn = LANGUAGE_EN[i]
-  }
+  const translatedSentence = translatedWords.join(" ")
+  return ucFirst(translatedSentence)
 }
-translateSentence("Hallo und willkommen beim Sprachkurs")
+console.log("translateSentence: ", translateSentence("Hallo und willkommen beim Sprachkurs"))
