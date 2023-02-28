@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+    <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+    <!-- CSS overrides - remove if you don't need it -->
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <section class="todoapp">
+        <header>
+            <h1>todos</h1>
+            <input class="new-todo" placeholder="What needs to be done?" autofocus>
+        </header>
+        <section class="header">
+            <input id="toggle-all" type="checkbox" class="new-todo">
+            <label for="toggle-all">Mark all as complete</label>
+            <ul class="todo-list"></ul>
+        </section>
+
+        <footer class="footer">
+            <span class="todo-count"><strong>0</strong>item left</span> 
+            <ul class="filters">
+                <li>
+                    <a href="#/" class="selected">All</a>
+                </li>
+                <li>
+                    <a href="#/active">Active</a>
+                </li>
+                <li>
+                    <a href="#/completed">All</a>
+                </li>
+            </ul>
+            <button class="clear-completed">Clear completed</button>
+        </footer>
+        <script src="app.js"></script>
+    </section>
+    
+</body>
+</html>
