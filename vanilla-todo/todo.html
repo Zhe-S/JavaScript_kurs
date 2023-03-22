@@ -22,9 +22,14 @@
     const addtodoBtn = document.getElementById("addtodoBtn");
     const todoList = document.getElementById("todoList");
 
-    addtodoBtn.addEventListener("click", function(){
+    addtodoBtn.addEventListener("keypress", function(){
         todoInput.innerText === "sdawad"
         console.log("Btn funktioniert")
+        console.log(event.which)
+    })
+
+    todoInput.addEventListener("keypress", (event)=>{
+        console.log(event.which)
     })
 </script>
 </html>
